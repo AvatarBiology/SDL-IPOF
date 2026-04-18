@@ -414,7 +414,7 @@ export default function App() {
                   </div>
                   <a href="https://ai.google.dev/gemini-api/docs/api-key" target="_blank" rel="noopener noreferrer" className="text-[12px] text-indigo-600 hover:text-indigo-800 hover:underline inline-flex items-center gap-1 self-start ml-1 mt-1 transition-colors">
                     <ExternalLink className="w-3 h-3" />
-                    如何取得 API Key?
+                    如何取得免費額度的 Gemini API Key?
                   </a>
                 </div>
 
@@ -483,10 +483,13 @@ export default function App() {
 
             {/* Field Selection Panel */}
             <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 shrink-0">
-              <h3 className="font-bold text-slate-800 mb-3 text-[14px] flex items-center gap-2">
+              <h3 className="font-bold text-slate-800 mb-2 text-[14px] flex items-center gap-2">
                 <FileBox className="w-4 h-4 text-indigo-500" />
                 選擇要匯出的欄位
               </h3>
+              <p className="text-[12px] text-slate-600 bg-amber-50/70 p-2.5 rounded-lg border border-amber-100/60 mb-3 leading-relaxed font-medium">
+                <span className="text-amber-600 font-bold">💡 提示：</span>請注意上傳的表格檔中，<strong className="text-slate-800">首列欄位名稱</strong>必須與下方所列名稱一致，才能精準辨識並呈現在分析報告中呦！
+              </p>
               <div className="flex flex-wrap gap-2">
                 {[
                   { id: 'Input', label: 'Input' },
