@@ -1,4 +1,4 @@
-# 自主學習：IPOF 分析報告產生器 (SDL-IPOF)
+# 自主學習：IPOF 分析報告產生器 (SDL-IPOF Analysis Tools)
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ![React](https://img.shields.io/badge/React-19.0-61DBFB?logo=react&logoColor=white)
