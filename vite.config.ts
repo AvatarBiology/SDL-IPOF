@@ -2,12 +2,13 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig, loadEnv} from 'vite';
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
 
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
     base: './', // 確保以相對路徑讀取資源，解決 GitHub Pages 找不到 JS/CSS 的空白畫面問題
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), cssInjectedByJsPlugin()],
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },
