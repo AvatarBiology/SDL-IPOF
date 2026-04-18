@@ -3,7 +3,7 @@ name: Deploy static content to Pages
 
 on:
   push:
-    branches: ['main']
+    branches: ['main', 'master'] # 把 master 也包進來防呆
 
 permissions:
   contents: read
@@ -14,9 +14,6 @@ concurrency:
   group: 'pages'
   cancel-in-progress: true
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   deploy:
     environment:
@@ -26,23 +23,30 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 24
-          cache: 'npm'
+          node-version: 20
+          # 💡 【改變一】：移除 cache: 'npm'，避免因為 lock 檔遺失引發當機
+          
       - name: Install dependencies
         run: |
-          npm install
-          npm install vite-plugin-css-injected-by-js --save-dev
+          npm install --no-package-lock
+          npm install vite-plugin-css-injected-by-js --no-save
+          # 💡 【改變二】：加入 --no-package-lock，完全略過所有版本衝突驗證，強勢安裝
+          
       - name: Build
         run: npm run build
+        
       - name: Setup Pages
         uses: actions/configure-pages@v4
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
