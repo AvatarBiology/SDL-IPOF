@@ -308,78 +308,135 @@ export default function App() {
       </nav>
 
       {students.length === 0 ? (
-        <main className="flex-1 w-full max-w-5xl mx-auto p-6 flex flex-col items-center justify-center min-h-[calc(100vh-8rem)]">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-indigo-50 mb-6">
-              <FileBox className="w-10 h-10 text-indigo-600" />
+        <main className="flex-1 w-full max-w-5xl mx-auto p-4 md:p-8 flex flex-col items-center min-h-[calc(100vh-8rem)]">
+          {/* Hero Section */}
+          <div className="text-center mb-16 mt-8 md:mt-12 animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out">
+            <div className="inline-flex items-center justify-center p-2.5 bg-white rounded-2xl mb-6 shadow-sm border border-slate-200">
+               <div className="flex gap-2">
+                 <div className="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center">
+                    <FileBox className="w-6 h-6 text-indigo-600" />
+                 </div>
+                 <div className="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center">
+                    <Sparkles className="w-6 h-6 text-amber-500" />
+                 </div>
+                 <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center">
+                    <Download className="w-6 h-6 text-emerald-600" />
+                 </div>
+               </div>
             </div>
-            <h2 className="text-3xl font-bold text-slate-800 mb-4 tracking-tight">歡迎使用 IPOF 分析報告產生器</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-              只需上傳含有學生學習紀錄的 CSV / Excel 檔案，即可一鍵批次生成專屬版面的高品質 PDF 報告。請選擇下方任一方式來準備您的資料：
+            <h2 className="text-4xl md:text-[2.75rem] font-extrabold text-slate-800 mb-6 tracking-tight leading-tight">
+              深度分析學習規劃，<br className="md:PDF" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500">
+                產出具啟發性的回饋報告。
+              </span>
+            </h2>
+            <p className="text-[1.1rem] text-slate-600 max-w-2xl mx-auto leading-relaxed">
+              專為高中「自主學習」課程打造。教師導入學生的 <span className="font-bold text-indigo-600">IPOF 學習檔案</span>，透過 <span className="font-bold text-amber-500">AI 深度診斷</span>給予溫暖回饋，並<span className="font-bold text-emerald-600">一鍵批量匯出PDF完整報告</span>，大幅節省批改時間。
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 w-full mb-12 cursor-default">
-            {/* Card 1 */}
-            <div className="border border-slate-200 bg-white rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500"></div>
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-3xl">🌟</span>
-                <h3 className="text-xl font-bold text-slate-800">方式一：使用「表單生產器」</h3>
-              </div>
-              <p className="text-slate-600 mb-4 leading-relaxed">
-                透過專屬表單給學生填寫，能輕鬆收集所有版面需要的欄位。收集完成後請至 Google 表單後台下載回覆內容的 CSV 檔案。
-              </p>
-              
-              <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 shadow-sm">
-                <h4 className="flex items-center gap-2 font-bold text-amber-800 text-[13px] mb-2">
-                  <span className="bg-amber-200/60 text-amber-900 rounded-full w-5 h-5 flex items-center justify-center text-[11px]">!</span>
-                  首次使用權限確認須知
-                </h4>
-                <p className="text-amber-800/90 text-[13px] leading-relaxed">
-                  開啟生產器時，系統會提示 <span className="font-semibold bg-amber-100 px-1 rounded mx-0.5">IPOF 表單產生器 needs your permission to access your data on Google.</span> 這是建立專屬表單的<strong className="text-amber-900 mx-0.5">必要步驟</strong>。<br className="my-1.5" />
-                  這項授權僅為了在<strong className="text-amber-900 mx-0.5">您個人的 Google 雲端硬碟中</strong>建立表單。您收集到的所有資料也將完全儲存在您的個人空間中，請安心授權使用。
-                </p>
-              </div>
-
-              <a 
-                href="https://script.google.com/macros/s/AKfycbwJW15j5wY9vmxAaw20M89d3zCuelKMFqBdxXqIdKWyQoqBgDQA6TvZ-CkC9hDkl3OT/exec" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-xl transition-all shadow-sm shadow-blue-200"
-              >
-                前往表單生產器 <ExternalLink className="w-4 h-4" />
-              </a>
+          {/* Features Grid */}
+          <div className="grid md:grid-cols-3 gap-6 w-full mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150 ease-out fill-mode-both">
+            <div className="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+               <div className="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center mb-5 text-amber-500 border border-amber-100">
+                 <Bot className="w-6 h-6" />
+               </div>
+               <h3 className="text-lg font-bold text-slate-800 mb-3">AI 智慧批次診斷</h3>
+               <p className="text-slate-600 text-[14px] leading-relaxed">
+                 串接強大的 Google Gemini，化身溫暖且具啟發性的教師，<span className="font-bold text-amber-600">自動分析數十份計畫</span>的盲點與邏輯，並<span className="font-bold text-amber-600">給予具體改善建議</span>。
+               </p>
             </div>
-
-            {/* Card 2 */}
-            <div className="border border-slate-200 bg-white rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500"></div>
-              <div className="flex items-center gap-3 mb-5">
-                <span className="text-3xl">📝</span>
-                <h3 className="text-xl font-bold text-slate-800">方式二：手動填寫 CSV 檔案</h3>
-              </div>
-              <p className="text-slate-600 mb-8 min-h-[4rem] leading-relaxed">
-                如果您已有現成的資料，請下載標準的 CSV 範例檔格式，透過 Excel 或 Google Sheets 打開後貼上您的資料並儲存。
-              </p>
-              <button 
-                onClick={downloadSampleCsv}
-                className="inline-flex items-center justify-center gap-2 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-3 px-4 rounded-xl transition-all shadow-sm shadow-emerald-200"
-              >
-                下載標準 CSV 範例檔 <Download className="w-4 h-4" />
-              </button>
+            <div className="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+               <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center mb-5 text-indigo-600 border border-indigo-100">
+                 <FileUp className="w-6 h-6" />
+               </div>
+               <h3 className="text-lg font-bold text-slate-800 mb-3">多管道資料匯入</h3>
+               <p className="text-slate-600 text-[14px] leading-relaxed">
+                 提供<span className="font-bold text-indigo-600">自動化的「Google 表單生產器」</span>及「標準 CSV 範本」，讓您輕鬆收集全班同學的資料，<span className="font-bold text-indigo-600">一鍵上傳</span>徹底無縫接軌。
+               </p>
+            </div>
+            <div className="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+               <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center mb-5 text-emerald-600 border border-emerald-100">
+                 <Eye className="w-6 h-6" />
+               </div>
+               <h3 className="text-lg font-bold text-slate-800 mb-3">極致列印排版</h3>
+               <p className="text-slate-600 text-[14px] leading-relaxed">
+                 解決傳統網頁印成 PDF 會跑版的痛點。客製化的防溢位機制與 A4 雙頁設計，<span className="font-bold text-emerald-600">下載出來即可直接列印或發送</span>。
+               </p>
             </div>
           </div>
 
-          <div className="w-full bg-indigo-50/50 border-2 border-dashed border-indigo-200 rounded-3xl p-10 flex flex-col items-center justify-center text-center group hover:bg-indigo-50 transition-colors">
-            <h3 className="text-xl font-bold text-indigo-900 mb-2">準備好資料了嗎？</h3>
-            <p className="text-slate-500 mb-8 max-w-md">請將透過上述方式收集好的 CSV 檔案上傳至此，我們將立刻為您生成所有報告。</p>
-            
-            <label className="cursor-pointer bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl font-medium transition-all flex items-center gap-2 shadow-sm shadow-indigo-200 text-lg hover:-translate-y-0.5">
-              <FileUp className="w-5 h-5" />
-              點此上傳 CSV / Excel 檔案
-              <input type="file" accept=".csv, .xlsx, .xls" className="hidden" onChange={handleFileUpload} />
-            </label>
+          {/* Action Area */}
+          <div className="w-full bg-white border border-slate-200 rounded-[2.5rem] shadow-sm p-6 md:p-12 animate-in fade-in slide-in-from-bottom-12 duration-700 delay-300 ease-out fill-mode-both mb-8">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl font-bold text-slate-800 mb-3">準備開始使用</h2>
+              <p className="text-slate-500">請選擇以下任一方式準備您的資料格式，準備好即可上傳</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 w-full mb-10">
+              {/* Card 1 */}
+              <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 md:p-8 relative overflow-hidden group hover:border-blue-300 transition-colors">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-slate-200 text-lg">1️⃣</div>
+                  <h3 className="text-lg font-bold text-slate-800">使用「表單生產器」</h3>
+                </div>
+                <p className="text-slate-600 mb-4 text-[14px] leading-relaxed">
+                  透過我們開發的 Google 腳本工具，在您的雲端硬碟<span className="font-bold text-blue-600">一秒自動建立</span>包含所有必要欄位的 Google 表單。
+                </p>
+                <div className="bg-white border border-slate-200 rounded-xl p-4 mb-6 shadow-sm">
+                  <h4 className="flex items-center gap-1.5 font-bold text-slate-700 text-[12px] mb-2">
+                    <span className="text-blue-500">ℹ️</span> 首次授權須知
+                  </h4>
+                  <p className="text-slate-500 text-[12px] leading-relaxed">
+                    系統會要求 Google 授權，這僅為了在「您的個人雲端硬碟」中建立表單，<span className="font-bold text-blue-600">資料完全屬於您，絕對安全</span>請放心放行。
+                  </p>
+                </div>
+                <a 
+                  href="https://script.google.com/macros/s/AKfycbwJW15j5wY9vmxAaw20M89d3zCuelKMFqBdxXqIdKWyQoqBgDQA6TvZ-CkC9hDkl3OT/exec" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white border border-transparent text-[14px] font-bold py-3 px-4 rounded-xl transition-all shadow-md shadow-blue-200 flex items-center justify-center gap-2"
+                >
+                  前往表單生產器 <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+
+              {/* Card 2 */}
+              <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 md:p-8 relative overflow-hidden group hover:border-emerald-300 transition-colors">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-slate-200 text-lg">2️⃣</div>
+                  <h3 className="text-lg font-bold text-slate-800">手動建立資料檔</h3>
+                </div>
+                <p className="text-slate-600 mb-8 max-w-[90%] text-[14px] leading-relaxed">
+                  如果您已有現成的學生資料，只需要<span className="font-bold text-emerald-600">下載標準 CSV 範本檔</span>，並將您的資料複製貼上到對應的欄位中即可。
+                </p>
+                <div className="mt-auto">
+                  <button 
+                    onClick={downloadSampleCsv}
+                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white border border-transparent text-[14px] font-bold py-3 px-4 rounded-xl transition-all shadow-md shadow-emerald-200 flex items-center justify-center gap-2"
+                  >
+                    下載標準 CSV 範例檔 <Download className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Upload Area */}
+            <div className="w-full relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-blue-500 to-indigo-500 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+              <div className="relative w-full bg-white border-2 border-dashed border-indigo-200 hover:border-indigo-400 rounded-3xl p-10 flex flex-col items-center justify-center text-center transition-colors">
+                <div className="w-16 h-16 bg-indigo-50 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <FileUp className="w-8 h-8 text-indigo-600" />
+                </div>
+                <h3 className="text-xl font-bold text-indigo-900 mb-2">準備好 CSV / Excel 檔了嗎？</h3>
+                <p className="text-slate-500 mb-8 max-w-sm text-sm">將收集好的檔案拖曳至此處，或點擊下方按鈕上傳，我們將為您渲染畫面。</p>
+                
+                <label className="cursor-pointer bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3.5 rounded-xl font-bold transition-all flex items-center gap-2 shadow-md hover:shadow-lg hover:-translate-y-0.5 text-[15px]">
+                  點擊選擇檔案上傳
+                  <input type="file" accept=".csv, .xlsx, .xls" className="hidden" onChange={handleFileUpload} />
+                </label>
+              </div>
+            </div>
           </div>
         </main>
       ) : (
@@ -414,7 +471,7 @@ export default function App() {
                   </div>
                   <a href="https://ai.google.dev/gemini-api/docs/api-key" target="_blank" rel="noopener noreferrer" className="text-[12px] text-indigo-600 hover:text-indigo-800 hover:underline inline-flex items-center gap-1 self-start ml-1 mt-1 transition-colors">
                     <ExternalLink className="w-3 h-3" />
-                    如何取得免費額度的 Gemini API Key?
+                    如何取得 API Key?
                   </a>
                 </div>
 
