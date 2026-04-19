@@ -3,7 +3,7 @@ name: Deploy static content to Pages
 
 on:
   push:
-    branches: ['main', 'master'] # 把 master 也包進來防呆
+    branches: ['main', 'master']
 
 permissions:
   contents: read
@@ -28,13 +28,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          # 💡 【改變一】：移除 cache: 'npm'，避免因為 lock 檔遺失引發當機
           
       - name: Install dependencies
         run: |
-          npm install --no-package-lock
-          npm install vite-plugin-css-injected-by-js --no-save
-          # 💡 【改變二】：加入 --no-package-lock，完全略過所有版本衝突驗證，強勢安裝
+          npm install --legacy-peer-deps
+          # 💡 【關鍵改變】：加入 --legacy-peer-deps，請它閉嘴略過版本衝突警告直接裝！
           
       - name: Build
         run: npm run build
