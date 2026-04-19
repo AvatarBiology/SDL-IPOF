@@ -48,11 +48,18 @@ npm run dev
 *   請前往 [Google AI Studio](https://aistudio.google.com/app/apikey) 申請免費的 API 金鑰。
 *   將金鑰填入系統畫面左側的設定面板中即可開始使用。
 
+### 3. 雲端部署 (Deployment - GitHub Pages)
+
+本專案已內建完整的 CI/CD 自動化流程。只要將這個專案推送到您的 GitHub 並設定 GitHub Pages：
+1. 進入您 GitHub 專案庫的 **Settings** > **Pages**。
+2. 在 **Build and deployment** 的 Source 選單中，選擇 **GitHub Actions**。
+3. 爾後只要您有新的程式碼推送到 `main` 或 `master` 分支，系統即會自動為您打包並發布至線上網頁，完全免費且無需自備伺服器！
+
 ---
 
 ## 📝 資料格式說明 (Data Format)
 
-為確保系統正常運作，您上傳的 Excel 或 CSV 檔案首行（Header）建議包含以下欄位名稱：
+為確保系統正常運作，您上傳的 Excel 或 CSV 檔案<strong style="color:red">首列（Header）必須與以下欄位名稱完全一致</strong>，系統才能精準辨識並載入資料：
 
 | 欄位名稱表 | 說明 |
 | :--- | :--- |
@@ -78,7 +85,6 @@ npm run dev
 *   **資料解析**：`papaparse` (CSV 解析), `xlsx` (Excel 解析)
 *   **PDF 生成**：`html2canvas` + `jspdf`
 *   **檔案處理**：`jszip` + `file-saver`
-
 ---
 
 ## 🤝 貢獻與交流 (Contributing & Contact)
