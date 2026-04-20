@@ -325,7 +325,7 @@ export default function App() {
                </div>
             </div>
             <h2 className="text-4xl md:text-[2.75rem] font-extrabold text-slate-800 mb-6 tracking-tight leading-tight">
-              深度分析學習規劃，<br className="md:PDF" />
+              深度分析 IPOF 學習規劃，<br className="md:PDF" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500">
                 產出具啟發性的回饋報告。
               </span>
